@@ -14,7 +14,7 @@ class ALL {
         button.style.borderRadius = "7px"; // Round the button's corners with a radius of 7px
         button.style.textAlign = "center"; // Center the button's text horizontally
         button.style.fontSize = "10px"; // Set the button's font size to 10px
-        console.log(button)
+        console.log("button")
         return button; // Return the created button element
     }
     color(){
@@ -51,34 +51,44 @@ class ALL {
     
         for (let button of list_button) {
             buttonGroup.appendChild(button);
+            console.log("2 раза")
         }
         return buttonGroup;
     }
-    createGroup_2(colorView, colorText){
-        let n = 0;
+    createGroup_2(colorView, colorText) {
+        // Initialize an empty array to store button groups
         let group_group_list = [];
-        let list_but = [];
-        for (let i of this.createButton_setup(colorView, colorText)){
-            list_but.push(i);
-            n += 1;
-            if (n == this.buttonwindow){
-                group_group_list.push(this.createGroup_1(list_but)[0]);
-                list_but = [];
+    
+        // Create buttons and group them
+        let buttons = this.createButton_setup(colorView, colorText);
+        let n = 0;
+    
+        // Loop through the buttons and group them based on the button window size
+        for (let i of buttons) {
+            group_group_list.push(this.createGroup_1([i]));
+            n++;
+        
+            if (n == this.buttonwindow) {
+                group_group_list.push(this.createGroup_1([]));
                 n = 0;
             }
         }
-        return group_group_list
+    
+        // Return the array of button groups
+        return group_group_list;
+      
     }
     createGroup_setup(colorView, colorText){
         // Добавляем группу кнопок на страницу
         //console.log(this.group_group_list)
+        console.log(this.createGroup_2(colorView, colorText))
         for (let i of this.createGroup_2(colorView, colorText)){
             console.log(i)
             document.body.appendChild(i);
         }
     }
     setupColor_all() {
-        const color = this.color().length
+        let color = this.color().length
         // Generate random colors for the button text, view, and background
         let colorText = this.random_color(color);
         let colorView = this.random_color(color); 
@@ -88,13 +98,13 @@ class ALL {
         let colorBackground = this.random_color(color);
         while (colorText == colorBackground | colorView == colorBackground) {
             colorBackground = this.random_color(color);
-            console.log(colorBackground)
-            console.log(colorView)
-            console.log(colorText)
-            let color = this.color()
-            document.body.style.backgroundColor = color[colorBackground];
-            this.createGroup_setup(color[colorView], color[colorText])
         }
+        console.log(colorBackground)
+        console.log(colorView)
+        console.log(colorText)
+        let color_all = this.color()
+        document.body.style.backgroundColor = color_all[colorBackground];
+        this.createGroup_setup(color_all[colorView], color_all[colorText])
     }
 }
 all = new ALL()
