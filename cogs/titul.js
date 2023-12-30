@@ -1,6 +1,6 @@
 class ALL {
     button(){
-        return ["Для абитуриентов", "Для студентов"]
+        return ["Для абитуриентов", "Для студентов", "o", "p"]
     }
     // This method creates a button with the specified name, width, height, color, and background color
     createButton(name, colorView, colorText) {
@@ -23,12 +23,6 @@ class ALL {
     // This method generates a random index from the colors array
     random_color(color) {
         return Math.floor(Math.random() * color); // Get a random integer between 0 and the length of the colors array
-    }
-    
-    get_window(){
-        this.height_all = window.innerHeight;
-        this.width_all = window.innerWidth;
-        return 0;
     }
     buttonwindow(){
         return Math.floor((window.innerWidth - 30) / 100)
@@ -62,14 +56,14 @@ class ALL {
         // Create buttons and group them
         let buttons = this.createButton_setup(colorView, colorText);
         let n = 0;
-    
+        let list_buttons = []
         // Loop through the buttons and group them based on the button window size
         for (let i of buttons) {
-            group_group_list.push(this.createGroup_1([i]));
-            n++;
-        
-            if (n == this.buttonwindow) {
-                group_group_list.push(this.createGroup_1([]));
+            n += 1 
+            list_buttons.push(i)
+            if (n == this.buttonwindow()) {
+                group_group_list.push(this.createGroup_1(list_buttons));
+                list_buttons = []
                 n = 0;
             }
         }
