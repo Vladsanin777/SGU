@@ -1,6 +1,6 @@
 class ALL {
     button(){
-        return ["Для абитуриентов", "Для студентов", "o", "p"]
+        return ["Для абитуриентов", "Для студентов", "o", "p", "piojhijhio", "uifyik", "ujhhgiohu", "fgiigukvuhvui"]
     }
     // This method creates a button with the specified name, width, height, color, and background color
     createButton(name, colorView, colorText) {
@@ -42,7 +42,7 @@ class ALL {
         buttonGroup.style.display = "flex";
         buttonGroup.style.justifyContent = "center";
         buttonGroup.style.alignItems = "center";
-    
+        console.log(list_button.length)
         for (let button of list_button) {
             buttonGroup.appendChild(button);
             console.log("2 раза")
@@ -56,12 +56,15 @@ class ALL {
         // Create buttons and group them
         let buttons = this.createButton_setup(colorView, colorText);
         let n = 0;
+        let d = 0;
         let list_buttons = []
+        let atm_but = buttons.length
         // Loop through the buttons and group them based on the button window size
         for (let i of buttons) {
             n += 1 
+            d += 1
             list_buttons.push(i)
-            if (n == this.buttonwindow()) {
+            if (n == this.buttonwindow() | atm_but == d) {
                 group_group_list.push(this.createGroup_1(list_buttons));
                 list_buttons = []
                 n = 0;
