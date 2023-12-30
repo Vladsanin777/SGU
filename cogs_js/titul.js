@@ -1,19 +1,36 @@
 class ALL {
+    is_Mobil() {
+        if (/iPhone|Android|BlackBerry|webOS|Windows Phone/i.test(navigator.userAgent)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     button(){
-        return ["Для абитуриентов", "Для студентов", "o", "p", "piojhijhio", "uifyik", "ujhhgiohu", "fgiigukvuhvui"]
+        return [["Для абитуриентов", "./for_abiturient.html"], ["Для студентов", "./for_students.html"], ["Новости", "./cogs_html/new.html"], ["Преподаватели", ""], ["Документы", ""], ["Библиотека", ""], ["Za Россию", ""], ["Контакты", ""]]
     }
     // This method creates a button with the specified name, width, height, color, and background color
     createButton(name, colorView, colorText) {
         const button = document.createElement("button");
-        button.textContent = name; // Set the button's text content to the specified name
+        button.textContent = name[0]; // Set the button's text content to the specified name
         button.style.display = "inline"; // Set the button's display property to inline
         button.style.color = colorText; // Set the button's text color to the specified color
-        button.style.margin = "10px"; // Add 10px of margin to the button
+        
         button.style.backgroundColor = colorView; // Set the button's background color to the specified color
         button.style.border = "5px"; // Add a 5px border to the button
-        button.style.borderRadius = "7px"; // Round the button's corners with a radius of 7px
         button.style.textAlign = "center"; // Center the button's text horizontally
-        button.style.fontSize = "10px"; // Set the button's font size to 10px
+        button.onclick = () => {
+            document.location.href = name[1];
+        };
+        if (this.is_Mobil()){
+            button.style.borderRadius = "50px"; // Round the button's corners with a radius of 7px
+            button.style.fontSize = "150px"; // Set the button's font size to 10px
+            button.style.margin = "30px"; // Add 10px of margin to the button
+        } else {
+            button.style.margin = "10px"; // Add 10px of margin to the button
+            button.style.borderRadius = "7px"; // Round the button's corners with a radius of 7px
+            button.style.fontSize = "50px"; // Set the button's font size to 10px
+        }
         console.log("button")
         return button; // Return the created button element
     }
@@ -25,7 +42,11 @@ class ALL {
         return Math.floor(Math.random() * color); // Get a random integer between 0 and the length of the colors array
     }
     buttonwindow(){
-        return Math.floor((window.innerWidth - 30) / 100)
+        if (this.is_Mobil()) {
+            return 1;
+        } else {
+            return Math.floor(window.innerWidth / 400);
+        }
     }
     createButton_setup(colorView, colorText){
         // Создаем кнопки
@@ -52,7 +73,7 @@ class ALL {
     createGroup_2(colorView, colorText) {
         // Initialize an empty array to store button groups
         let group_group_list = [];
-    
+
         // Create buttons and group them
         let buttons = this.createButton_setup(colorView, colorText);
         let n = 0;
@@ -70,10 +91,10 @@ class ALL {
                 n = 0;
             }
         }
-    
+
         // Return the array of button groups
         return group_group_list;
-      
+
     }
     createGroup_setup(colorView, colorText){
         // Добавляем группу кнопок на страницу
