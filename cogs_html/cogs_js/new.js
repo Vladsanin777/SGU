@@ -7,7 +7,7 @@ class ALL {
         }
     }
     institut(){
-        return [["Колледжи", "./cogs_html/new_colleges.html"], ["Институты", "./cogs_html/new_instityts.html"], ["Факультеты СГУ", "./cogs_html/new_facutets_SGU.html"]]
+        return [["Колледжи", "./new_colleges.html"], ["Институты", "./cogs_html/new_instityts.html"], ["Факультеты СГУ", "./cogs_html/new_facutets_SGU.html"]]
     }
     // This method creates a button with the specified name, width, height, color, and background color
     createButton(name, colorView, colorText) {
