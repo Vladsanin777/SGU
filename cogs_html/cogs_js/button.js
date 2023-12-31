@@ -6,9 +6,6 @@ class ALL {
             return false;
         }
     }
-    institut(){
-        return [["Геологический колледж", "./new_Geologicheskiy_kolledzh.html"], ["Колледж радиоэлектроники", "./new_Kolledzh_radioelektroniki.html"]]
-    }
     // This method creates a button with the specified name, width, height, color, and background color
     createButton(name, colorView, colorText) {
         const button = document.createElement("button");
@@ -51,7 +48,7 @@ class ALL {
     createButton_setup(colorView, colorText){
         // Создаем кнопки
         let button_list = [];
-        let button = this.institut();
+        let button = window.button_Spisok;
         for (let i of button) {
             button_list.push(this.createButton(i, colorView, colorText));
         }
